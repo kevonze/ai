@@ -1,0 +1,25 @@
+Responsible AI Inspector: Case Files
+
+Welcome to another episode of "Who Let the Bots Out?" — where we put on our digital detective hats and get to the bottom of AI shenanigans. Today, I’m cracking open two fresh cases. Let’s see what’s cooking in the world of algorithms!
+Case 1: The Lending Algorithm
+What’s Happening? 
+A bank uses an AI system to approve or deny loan applications. It crunches data like income, credit score, and zip code to decide who gets the green light.
+
+What Could Go Wrong?  
+Here’s the twist: the AI starts denying more loans to applicants from certain neighborhoods, even when their financial stats are solid. That’s a classic case of algorithmic bias! Since zip codes can be proxies for race or income, the model might unintentionally reinforce old prejudices, locking people out of opportunities just because of where they live.
+
+How to Make it Better: 
+Turn up the transparency. The bank should regularly audit the AI’s decisions for bias and remove or reduce the influence of location-based data like zip codes. Bonus: publish simple, plain-English reports explaining how loan decisions are made, so everyone feels in the loop.
+ 2: The Virtual Tutor
+What’s Happening? 
+A school district rolls out an AI-powered tutor that gives students personalized feedback on essays. It promises 24/7 homework help!
+What Could Go Wrong?  
+Some students notice the AI is harsher with non-native English speakers, flagging their essays as “off-topic” more often. Uh-oh. That’s a fairness fail. The AI might have been trained mostly on essays from native speakers, so it struggles with diverse writing styles and accents.
+
+How to Make it Better: 
+Diversity is key! Retrain the AI with essays from a wide variety of backgrounds, languages, and dialects. And, give students a way to appeal or get a human review if they think the AI got it wrong.
+
+AI is like a super-smart intern: fast, but sometimes clueless about real-world nuance. By keeping an eye on fairness, privacy, and transparency, we can make sure the bots help everyone — not just a lucky few. Remember, good AI needs great oversight!
+
+Stay curious,  
+The Responsible AI Inspector
