@@ -1,0 +1,79 @@
+def crypto_advisor(user_query):
+    if "sustainable" in user_query.lower():
+        recommend = max(crypto_db, key=lambda x: crypto_db[x]["sustainability_score"])
+        return f"🌱 **{recommend}** is leading in eco-friendliness! Low energy use, high potential for long-term growth. Want market insights?"
+    
+    elif "trending" in user_query.lower():
+        trending_coins = [coin for coin, data in crypto_db.items() if data["price_trend"] == "rising"]
+        return f"📈 Currently **trending**: {', '.join(trending_coins)}! These coins are gaining traction—what would you like to know next?"
+    
+    else:
+        return "🤖 I'm here to help! Try asking about **sustainability, trending coins, or market value**."
+def validate_query(user_query):
+    keywords = ["sustainable", "trending", "market cap"]
+    if any(word in user_query.lower() for word in keywords):
+        return True  # Allow query execution
+    else:
+        return "⚠️ This request isn't supported. Try asking about trends or eco-friendly crypto!"
+name: CryptoBot CI/CD
+on: [push]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run tests
+        run: python -m unittest discover tests/
+
+      - name: Deploy if tests pass
+        run: docker build -t crypto-bot .
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Sample historical data
+data = {
+    "Bitcoin": [40000, 42000, 45000, 43000, 47000],  # Prices over time
+    "Ethereum": [2800, 2900, 3100, 3000, 3300],
+    "Cardano": [1.2, 1.3, 1.5, 1.4, 1.6]
+}
+df = pd.DataFrame(data)
+
+# Train a basic trend predictor
+model = LinearRegression()
+X = [[i] for i in range(len(df))]  # Time steps
+y = df["Bitcoin"]  # Example: Predict Bitcoin prices
+model.fit(X, y)
+
+# Predict next price
+next_price = model.predict([[len(df)]])
+print(f"📈 Projected Bitcoin price: ${next_price[0]:.2f}")
+import speech_recognition as sr
+import pyttsx3
+
+# Initialize voice engine
+engine = pyttsx3.init()
+recognizer = sr.Recognizer()
+
+def listen_for_query():
+    with sr.Microphone() as source:
+        print("🎤 Listening for query...")
+        recognizer.adjust_for_ambient_noise(source)
+        audio = recognizer.listen(source)
+        try:
+            query = recognizer.recognize_google(audio)
+            print(f"👤 You said: {query}")
+            return query
+        except sr.UnknownValueError:
+            return "⚠️ Sorry, I didn't catch that."
+
+def respond(text):
+    engine.say(text)
+    engine.runAndWait()
+
+# Example interaction
+query = listen_for_query()
+response = crypto_advisor(query)
+respond(response)
